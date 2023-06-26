@@ -19,7 +19,7 @@ export default function LoginForm() {
   // const isLogged = useSelector(state => state.userReducer.isLogged)
   const [notConfirmed, setNotConfirmed] = useState(false)
   const resendEmail = () => {
-    Axios.post("http://localhost:5000/login/resend-email-verification", {
+    Axios.post("https://qimma-backend.onrender.com/login/resend-email-verification", {
       email: formik.values.email
     }).then(response => {
       toast.success(response.data.succMsg)
@@ -29,14 +29,14 @@ export default function LoginForm() {
   }
   const myState = useSelector(state => state.userReducer.email)
   const login = () => {
-    Axios.post("http://localhost:5000/login", {
+    Axios.post("https://qimma-backend.onrender.com/login", {
       email: formik.values.email,
       password: formik.values.password,
     }, {
       withCredentials: true // allow sending cookies
     }).then(async (response) => {
       console.log("DATA ---> ", response.data)
-      await dispatch(checkLoginStatus())
+      await dispatch(checkLoginStatus()) 
       console.log("STATE ----> ", myState)
       // console.log("IS LOGGED --> ", isLogged)
       navigate("/home")
@@ -64,7 +64,7 @@ export default function LoginForm() {
   })
 
   const forgotPassword = () => {
-    Axios.post("http://localhost:5000/login/password-resetting", {
+    Axios.post("https://qimma-backend.onrender.com/login/password-resetting", {
       email: formik.values.email,
     }).then(response => {
       document.getElementById("login-mssg").innerHTML = response.response.data.succMsg;
