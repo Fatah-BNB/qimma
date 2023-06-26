@@ -4,6 +4,7 @@ import { useEffect } from "react"
 export default function ErrorPage() {
     useEffect(() => {
         console.log("Error mounted")
+        console.log("ERR URL ==> ", window.location.href);
     })
     return(
         <div className="flex items-center justify-center h-[80vh]">
