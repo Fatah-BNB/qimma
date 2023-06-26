@@ -43,8 +43,8 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<ProtectedRoute isLogged={!isLogged} child={<Landing />} redirect="/home" />} />
-          <Route path="/home" element={<ProtectedRoute isLogged={isLogged} child={<Home />} redirect="/login" />} />
+          <Route path="https://fatah-bnb.github.io/qimma/" element={<ProtectedRoute isLogged={!isLogged} child={<Landing />} redirect="/home" />} />
+          <Route path="https://fatah-bnb.github.io/qimma/home" element={<ProtectedRoute isLogged={isLogged} child={<Home />} redirect="/login" />} />
 
           <Route path="/register" element={<ProtectedRoute isLogged={!isLogged} child={<RegistrationForm />} redirect="/profile" />} />
           <Route path="/login" element={<ProtectedRoute isLogged={!isLogged} child={<LoginForm />} redirect="/profile" />} />
