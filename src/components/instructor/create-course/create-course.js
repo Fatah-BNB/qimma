@@ -24,7 +24,7 @@ export default function CreateCourse() {
         picture && formData.append('picture', picture);
         console.log("picture ===> ", picture)
         console.log("formdata ===> ", formData)
-        Axios.post("http://localhost:5000/course/create-course", formData, { headers: { 'Content-Type': 'multipart/form-data' } }).then(response => {
+        Axios.post("https://qimma-backend.onrender.com/course/create-course", formData, { headers: { 'Content-Type': 'multipart/form-data' } }).then(response => {
             console.log(response.data.succMsg)
             toast.dismiss()
             toast.success(response.data.succMsg)
@@ -36,14 +36,14 @@ export default function CreateCourse() {
         })
     }
     const getTiers = () => {
-        Axios.get("http://localhost:5000/register/tiers").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/register/tiers").then(response => {
             setTiers(response.data.tiers)
         }).catch(error => {
             console.log("ERR fetching tiers --> ", error.response.data.errMsg)
         })
     }
     const getFields = () => {
-        Axios.get("http://localhost:5000/register/fields").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/register/fields").then(response => {
             setFields(response.data.fields)
         }).catch(error => {
             console.log("ERR fetching fields --> ", error.response.data.errMsg)

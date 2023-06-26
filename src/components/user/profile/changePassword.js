@@ -8,7 +8,7 @@ export default function ChangePassword() {
     const [edited, setEdited] = useState(false)
     const changePassword = () => {
         toast.loading("updating password ..")
-        Axios.put("http://localhost:5000/profile/edit-user-info/security/password", {
+        Axios.put("https://qimma-backend.onrender.com/profile/edit-user-info/security/password", {
             oldPassword: formik.values.oldPassword,
             newPassword: formik.values.newPassword,
             newPasswordc: formik.values.newPasswordc,

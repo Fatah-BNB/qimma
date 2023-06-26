@@ -14,10 +14,12 @@ export default function AdminLoginForm() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const login = () => {
-    Axios.post("http://localhost:5000/admin/login", {
+    Axios.post("https://qimma-backend.onrender.com/admin/login", {
       email: formik.values.email,
-      password: formik.values.password,
-    }, { withCredentials: true }).then(async (response) => {
+      password: formik.values.password
+    }, {
+      withCredentials: true
+    }).then(async (response) => {
       await dispatch(checkAdminLoginStatus())
       navigate("/admin-dashboard", { state: { username: response.data.admin_username } })
     }).catch(error => { toast.error(error.response.data.errMsg) })

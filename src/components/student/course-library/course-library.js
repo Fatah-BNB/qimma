@@ -13,7 +13,7 @@ export default function CourseLibrary() {
     const navigate = useNavigate()
     const [courses, setCourses] = useState([])
     const getStudentCourses = () => {
-        Axios.get("http://localhost:5000/student/enrolled-courses").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/student/enrolled-courses").then(response => {
             console.log(response.data.succMsg)
             console.log(response.data.results)
             setCourses(response.data.results)

@@ -18,7 +18,7 @@ export default function InstrcutorDashboard() {
 
 
     const getInsights = () => {
-        Axios.get("http://localhost:5000/instructor/instructor-dashboard/courses-insights").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/instructor/instructor-dashboard/courses-insights").then(response => {
             console.log(response.data.results)
             setAllCourses(response.data.results)
             setCoursesNumber(response.data.results.length)

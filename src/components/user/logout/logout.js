@@ -23,7 +23,7 @@ export default function Logout() {
     })
     const isLogged = useSelector(state => state.userReducer.isLogged)
     const logout = () => {
-        Axios.post('http://localhost:5000/logout', null, {
+        Axios.post('https://qimma-backend.onrender.com/logout', null, {
             withCredentials: true
         })
             .then(response => {

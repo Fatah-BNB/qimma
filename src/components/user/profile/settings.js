@@ -20,7 +20,7 @@ export default function     () {
     const [buttonText, setButtonText] = useState("Change password")
 
     const getAvatar = () => {
-        Axios.get("http://localhost:5000/profile/edit-user-info/getAvatar").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/profile/edit-user-info/getAvatar").then(response => {
             if (response.data.picture) {
                 setImage(response.data.picture)
             } else {
@@ -33,7 +33,7 @@ export default function     () {
     }
 
     const deleteProfilePic = async () => {
-        await Axios.put("http://localhost:5000/profile/edit-user-info/deleteAvatar").then(response => {
+        await Axios.put("https://qimma-backend.onrender.com/profile/edit-user-info/deleteAvatar").then(response => {
             console.log(response.data.succMsg)
             getAvatar()
         }).catch(error => {
@@ -45,7 +45,7 @@ export default function     () {
         const formData = new FormData();
         formData.append('avatar', event.target.files[0]);
         toast.loading('uploading...');
-        Axios.post("http://localhost:5000/profile/edit-user-info/avatar", formData, { headers: { 'Content-Type': 'multipart/form-data' } }).then(response => {
+        Axios.post("https://qimma-backend.onrender.com/profile/edit-user-info/avatar", formData, { headers: { 'Content-Type': 'multipart/form-data' } }).then(response => {
             console.log("UPLOADED =====> ", response.data.results)
             toast.dismiss();
             getAvatar()
@@ -58,7 +58,7 @@ export default function     () {
     }
 
     const getWialayas = () => {
-        Axios.get("http://localhost:5000/register/wilayas").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/register/wilayas").then(response => {
             setwilayas(response.data.wilayas)
         }).catch(error => {
             console.log("ERR fetching tiers --> ", error.response.data.errMsg)
@@ -66,7 +66,7 @@ export default function     () {
     }
 
     const updateInfo = () => {
-        Axios.put("http://localhost:5000/profile/edit-user-info", { user: formik.values }).then(response => {
+        Axios.put("https://qimma-backend.onrender.com/profile/edit-user-info", { user: formik.values }).then(response => {
             toast.success(response.data.succMsg)
         }).catch(error => {
             toast.error(error.response.data.errMsg)
@@ -74,7 +74,7 @@ export default function     () {
     }
 
     const getUserInfo = () => {
-        Axios.get("http://localhost:5000/profile").then(async response => {
+        Axios.get("https://qimma-backend.onrender.com/profile").then(async response => {
             await dispatch(fetchUserData(response.data.results))
             console.log("response ==> ", response.data.results)
         }).then(error => {

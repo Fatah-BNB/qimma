@@ -31,12 +31,12 @@ export default function NavBar() {
         console.log("Navbar changed: ", isLogged)
     })
     const getProfilePic = () => {
-        Axios.get("http://localhost:5000/profile/edit-user-info/getAvatar").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/profile/edit-user-info/getAvatar").then(response => {
             setProfilePic(response.data.picture)
         })
     }
     const getUserType = () => {
-        Axios.get("http://localhost:5000/user-type").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/user-type").then(response => {
             setUserType(response.data.userType)
         })
     }

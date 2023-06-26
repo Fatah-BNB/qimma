@@ -13,7 +13,7 @@ import Footer from '../../user/footer'
 export default function CoursesList() {
     const [courses, setCourses] = useState([])
     const deleteCourse = (courseId) => {
-        Axios.delete(`http://localhost:5000/manage-courses/${courseId}`).then(response => {
+        Axios.delete(`https://qimma-backend.onrender.com/manage-courses/${courseId}`).then(response => {
             toast.success(response.data.succMsg)
             getCourses()
         }).catch(error => {
@@ -21,7 +21,7 @@ export default function CoursesList() {
         })
     }
     const getCourses = () => {
-        Axios.get("http://localhost:5000/manage-courses/my-courses").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/manage-courses/my-courses").then(response => {
             console.log("COURSES RESULTS: ", response.data.results)
             setCourses(response.data.results)
         }).catch(error => {
@@ -29,7 +29,7 @@ export default function CoursesList() {
         })
     }
     const publishCourse = (courseId) => {
-        Axios.put("http://localhost:5000/manage-courses/publish-course", { courseId }).then(response => {
+        Axios.put("https://qimma-backend.onrender.com/manage-courses/publish-course", { courseId }).then(response => {
             console.log(response.data.succMsg)
             toast.success(response.data.succMsg)
             getCourses()

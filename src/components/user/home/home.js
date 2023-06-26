@@ -21,7 +21,7 @@ export default function Home() {
     const [searchValue, setSearchValue] = useState('');
 
     const getFields = () => {
-        Axios.get("http://localhost:5000/register/fields")
+        Axios.get("https://qimma-backend.onrender.com/register/fields")
             .then(response => {
                 setFields(response.data.fields);
             })
@@ -31,7 +31,7 @@ export default function Home() {
     };
 
     const getStudentCourses = () => {
-        Axios.get("http://localhost:5000/student/enrolled-courses")
+        Axios.get("https://qimma-backend.onrender.com/student/enrolled-courses")
             .then(response => {
                 setEnrolledCourses(response.data.results);
                 console.log("student courses - ", response.data.results);
@@ -43,7 +43,7 @@ export default function Home() {
 
     const getPublishedCourses = () => {
         setLoading(true);
-        Axios.get("http://localhost:5000/course/published-courses")
+        Axios.get("https://qimma-backend.onrender.com/course/published-courses")
             .then(response => {
                 console.log(response.data.succMsg);
                 console.log(response.data.results);

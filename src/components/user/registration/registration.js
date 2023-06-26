@@ -12,21 +12,21 @@ export default function RegistrationForm() {
     const [fields, setFields] = useState([])
     const [wilayas, setWilayas] = useState([])
     const getTiers = () => {
-        Axios.get("http://localhost:5000/register/tiers").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/register/tiers").then(response => {
             setTiers(response.data.tiers)
         }).catch(error => {
             console.log("ERR fetching tiers --> ", error.response.data.errMsg)
         })
     }
     const getFields = () => {
-        Axios.get("http://localhost:5000/register/fields").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/register/fields").then(response => {
             setFields(response.data.fields)
         }).catch(error => {
             console.log("ERR fetching fields --> ", error.response.data.errMsg)
         })
     }
     const getwilayas = () => {
-        Axios.get("http://localhost:5000/register/wilayas").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/register/wilayas").then(response => {
             setWilayas(response.data.wilayas)
         }).catch(error => {
             console.log("ERR fetching wilayas --> ", error.response.data.errMsg)
@@ -41,7 +41,7 @@ export default function RegistrationForm() {
     const [registerMsg, setRegisterMsg] = useState("")
     const navigate = useNavigate()
     const register = () => {
-        Axios.post("http://localhost:5000/register", {
+        Axios.post("https://qimma-backend.onrender.com/register", {
             firstname: formik.values.firstname,
             lastname: formik.values.lastname,
             gender: formik.values.gender,

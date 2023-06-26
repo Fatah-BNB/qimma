@@ -12,7 +12,7 @@ export default function CourseDetails() {
     const navigate = useNavigate()
     const [enrolled, setEnrolled] = useState(false)
     const CheckEnrolledCourse = (id) => {
-        Axios.get(`http://localhost:5000/course/${id}/enrolled-course`).then(response => {
+        Axios.get(`https://qimma-backend.onrender.com/course/${id}/enrolled-course`).then(response => {
             console.log("is enrolled ===> ", response.data.results[0])
             if (response.data.results[0].counts > 0) {
                 setEnrolled(true)
@@ -35,7 +35,7 @@ export default function CourseDetails() {
     }
 
     const getCourse = (courseId) => {
-        Axios.get(`http://localhost:5000/course/${courseId}/course-details`).then(response => {
+        Axios.get(`https://qimma-backend.onrender.com/course/${courseId}/course-details`).then(response => {
             console.log(response.data.succMsg)
             console.log(response.data.results)
             setCourse(response.data.results[0])

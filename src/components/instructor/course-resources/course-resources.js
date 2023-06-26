@@ -10,7 +10,7 @@ import Footer from '../../user/footer';
 export default function CourseResources() {
     const navigate = useNavigate();
     const getResources = () => {
-        Axios.get(`http://localhost:5000/course/get-course-resources/${location.state.courseId}`)
+        Axios.get(`https://qimma-backend.onrender.com/course/get-course-resources/${location.state.courseId}`)
             .then(response => {
                 console.log('COURSE RESOURCES ', response.data.results);
                 setCourseVideoList(response.data.results);
@@ -35,7 +35,7 @@ export default function CourseResources() {
         video && formData.append('video', video);
         console.log('video ===> ', video);
         console.log('formdata ===> ', formData);
-        Axios.post(`http://localhost:5000/course/upload-video/${location.state.courseId}`, formData, {
+        Axios.post(`https://qimma-backend.onrender.com/course/upload-video/${location.state.courseId}`, formData, {
             headers: { 'Content-Type': 'multipart/form-data' },
         })
             .then(response => {

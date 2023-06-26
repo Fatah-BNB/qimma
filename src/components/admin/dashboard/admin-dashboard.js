@@ -32,7 +32,7 @@ export default function AdminDashboard() {
         getNumberOfVideos()
     }, [])
     const getNumberOfVideos = () => {
-        Axios.get("http://localhost:5000/admin/count-uploads?resource=video").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/count-uploads?resource=video").then(response => {
             setVideoNumber(response.data.nbrUplaods)
             console.log(response.data.nbrUplaods)
         }).catch(error => {
@@ -40,7 +40,7 @@ export default function AdminDashboard() {
         })
     }
     const getUsersPerWilaya = () => {
-        Axios.get("http://localhost:5000/admin/count-users-PerWilaya").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/count-users-PerWilaya").then(response => {
             setUserPerWilaya(response.data.nbrUsersPerWilaya)
             console.log(response.data.nbrUsersPerWilaya)
         }).catch(error => {
@@ -48,42 +48,42 @@ export default function AdminDashboard() {
         })
     }
     const getUsersCount = () => {
-        Axios.get("http://localhost:5000/admin/users-count").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/users-count").then(response => {
             setUsersNumber(response.data.nbrUsers)
         }).catch(error => {
             console.log(error.response.data.errMsg)
         })
     }
     const getStudentCount = () => {
-        Axios.get("http://localhost:5000/admin/users-count?type=student").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/users-count?type=student").then(response => {
             setStudentNumber(response.data.nbrUsers)
         }).catch(error => {
             console.log(error.response.data.errMsg)
         })
     }
     const getInstructorCount = () => {
-        Axios.get("http://localhost:5000/admin/users-count?type=instructor").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/users-count?type=instructor").then(response => {
             setInstructorsNumber(response.data.nbrUsers)
         }).catch(error => {
             console.log(error.response.data.errMsg)
         })
     }
     const getTotalCourses = () => {
-        Axios.get("http://localhost:5000/admin/courses-count").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/courses-count").then(response => {
             setCoursesNumber(response.data.nbrCourses)
         }).catch(error => {
             console.log(error.response.data.errMsg)
         })
     }
     const getIncome = () => {
-        Axios.get("http://localhost:5000/admin/total-income").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/total-income").then(response => {
             setIncome(response.data.totalIncome)
         }).catch(error => {
             console.log(error.response.data.errMsg)
         })
     }
     const getCoursesCountPerTier = () => {
-        Axios.get("http://localhost:5000/admin/tier-courses-count").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/tier-courses-count").then(response => {
             const tiers = []
             const coursesPerTier = []
             for (const tier in response.data.nbrCoursesPerTier) {
@@ -97,7 +97,7 @@ export default function AdminDashboard() {
         })
     }
     const getCoursesCountPerField = () => {
-        Axios.get("http://localhost:5000/admin/field-courses-count").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/field-courses-count").then(response => {
             const fields = []
             const coursesPerField = []
             for (const course in response.data.nbrCoursesPerField) {
@@ -111,7 +111,7 @@ export default function AdminDashboard() {
         })
     }
     const getCoursesPerMonth = () => {
-        Axios.get("http://localhost:5000/admin/month-courses-count").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/month-courses-count").then(response => {
             const date = new Date();
             const months = []
             const monthNames = [
@@ -131,7 +131,7 @@ export default function AdminDashboard() {
         })
     }
     const getStudentsPereTier = () => {
-        Axios.get("http://localhost:5000/admin/count-student-perTier").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/count-student-perTier").then(response => {
             const students = []
             console.log("STUDENTS : ", response.data.nbrStudentPerTier)
             for (const student in response.data.nbrStudentPerTier) {

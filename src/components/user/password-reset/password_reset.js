@@ -8,7 +8,7 @@ export default function ResetForm() {
     
   const [loginMsg, setLoginMsg] = useState("")
   const login = () => {
-    Axios.post("http://localhost:5000/", {
+    Axios.post("https://qimma-backend.onrender.com/", {
       email: formik.values.email,
       password: formik.values.password,
     }).then((response) => {
@@ -38,7 +38,7 @@ export default function ResetForm() {
       const url = window.location.href;
       const params = url.split("/").slice(-2);
       console.log(params.join("/"));
-      Axios.post("http://localhost:5000/login/password-resetting/"+params.join("/"), {  
+      Axios.post("https://qimma-backend.onrender.com/login/password-resetting/"+params.join("/"), {  
       password: formik.values.password,
       }).then(response => {
           navigate("/login")

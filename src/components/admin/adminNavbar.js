@@ -15,7 +15,7 @@ export default function AdminNavbar() {
     const navigate = useNavigate();
 
     const logout = () => {
-        Axios.post('http://localhost:5000/admin/logout', null, {
+        Axios.post('https://qimma-backend.onrender.com/admin/logout', null, {
             withCredentials: true
         })
             .then(async response => {
