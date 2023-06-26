@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('./DUBAIREGULAR.ttf') format('truetype');
+  }
+
+  body {
+    font-family: 'CustomFont', sans-serif;
+  }
+#topdiv{
+    
+    clip-path: polygon(100% 0, 30% 0, 43% 100%, 100% 100%);
+
+}
+
+.fade-up-animation {
+    opacity: 0;
+    animation: fadeUp 0.5s ease-in-out forwards;
+  }
+  
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
