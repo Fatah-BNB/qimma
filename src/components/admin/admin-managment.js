@@ -14,7 +14,7 @@ export default function AdminManagment() {
     ];
 
     const getAllUsers = () => {
-        Axios.get("https://qimma-backend.onrender.com/admin/users").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/users", { headers: { Authorization: `${token}` } }).then(response => {
             setUsers(response.data.users)
             console.log(response.data.users)
         }).catch(error => {

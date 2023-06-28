@@ -8,8 +8,10 @@ const adminSlice = createSlice({
     },
     reducers: {
         checkAdminLoginStatus: state => {
-            const userCookie = Cookies.get('admin')
-            userCookie ? state.isLogged = true : state.isLogged = false;
+            /*const userCookie = Cookies.get('admin')
+            userCookie ? state.isLogged = true : state.isLogged = false;*/
+            const token = localStorage.getItem('jwtToken')
+            token ? state.isLogged = true : state.isLogged = false;
         },
     },
 });

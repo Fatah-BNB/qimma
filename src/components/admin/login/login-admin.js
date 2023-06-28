@@ -14,6 +14,7 @@ export default function AdminLoginForm() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const login = () => {
+    const token = localStorage.getItem('jwtToken')
     Axios.post("https://qimma-backend.onrender.com/admin/login", {
       email: formik.values.email,
       password: formik.values.password

@@ -32,7 +32,7 @@ export default function AdminDashboard() {
         getNumberOfVideos()
     }, [])
     const getNumberOfVideos = () => {
-        Axios.get("https://qimma-backend.onrender.com/admin/count-uploads?resource=video").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/count-uploads?resource=video", { headers: { Authorization: `${token}` } }).then(response => {
             setVideoNumber(response.data.nbrUplaods)
             console.log(response.data.nbrUplaods)
         }).catch(error => {
@@ -40,7 +40,7 @@ export default function AdminDashboard() {
         })
     }
     const getUsersPerWilaya = () => {
-        Axios.get("https://qimma-backend.onrender.com/admin/count-users-PerWilaya").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/count-users-PerWilaya", { headers: { Authorization: `${token}` } }).then(response => {
             setUserPerWilaya(response.data.nbrUsersPerWilaya)
             console.log(response.data.nbrUsersPerWilaya)
         }).catch(error => {
@@ -48,42 +48,42 @@ export default function AdminDashboard() {
         })
     }
     const getUsersCount = () => {
-        Axios.get("https://qimma-backend.onrender.com/admin/users-count").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/users-count", { headers: { Authorization: `${token}` } }).then(response => {
             setUsersNumber(response.data.nbrUsers)
         }).catch(error => {
             console.log(error.response.data.errMsg)
         })
     }
     const getStudentCount = () => {
-        Axios.get("https://qimma-backend.onrender.com/admin/users-count?type=student").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/users-count?type=student", { headers: { Authorization: `${token}` } }).then(response => {
             setStudentNumber(response.data.nbrUsers)
         }).catch(error => {
             console.log(error.response.data.errMsg)
         })
     }
     const getInstructorCount = () => {
-        Axios.get("https://qimma-backend.onrender.com/admin/users-count?type=instructor").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/users-count?type=instructor", { headers: { Authorization: `${token}` } }).then(response => {
             setInstructorsNumber(response.data.nbrUsers)
         }).catch(error => {
             console.log(error.response.data.errMsg)
         })
     }
     const getTotalCourses = () => {
-        Axios.get("https://qimma-backend.onrender.com/admin/courses-count").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/courses-count", { headers: { Authorization: `${token}` } }).then(response => {
             setCoursesNumber(response.data.nbrCourses)
         }).catch(error => {
             console.log(error.response.data.errMsg)
         })
     }
     const getIncome = () => {
-        Axios.get("https://qimma-backend.onrender.com/admin/total-income").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/total-income", { headers: { Authorization: `${token}` } }).then(response => {
             setIncome(response.data.totalIncome)
         }).catch(error => {
             console.log(error.response.data.errMsg)
         })
     }
     const getCoursesCountPerTier = () => {
-        Axios.get("https://qimma-backend.onrender.com/admin/tier-courses-count").then(response => {
+        Axios.get("https://qimma-backend.onrender.com/admin/tier-courses-count", { headers: { Authorization: `${token}` } }).then(response => {
             const tiers = []
             const coursesPerTier = []
             for (const tier in response.data.nbrCoursesPerTier) {
