@@ -30,15 +30,16 @@ export default function LoginForm() {
   }
   const myState = useSelector(state => state.userReducer.email)
   const login = () => {
-    const token = localStorage.getItem('jwtToken')
     Axios.post("https://qimma-backend.onrender.com/login", {
       email: formik.values.email,
-      password: formik.values.password,  
-    }, {
-      withCredentials: true // allow sending cookies
-    }, { headers: { Authorization: `${token}` } }).then(async (response) => {
-      console.log("DATA ---> ", response.data)
-      await dispatch(checkLoginStatus()) 
+      password: formik.values.password,
+    }).then(async (response) => {
+      console.log("Token ---> ", response.data.token)
+      const ResivedToken = response.data.token
+      //saving token on localStorage
+      localStorage.setItem("jwtToken", ResivedToken)
+      console.log("headers ---> ", response.headers)
+      await dispatch(checkLoginStatus())
       console.log("STATE ----> ", myState)
       // console.log("IS LOGGED --> ", isLogged)
       navigate("/home")

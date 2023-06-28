@@ -3,9 +3,10 @@ import Axios from "axios"
 import { useSelector, useDispatch } from "react-redux"
 import { checkLoginStatus } from "../../../slices/user-slice"
 import NavBar from "../../user/navbar/navbar"
+import { useNavigate } from "react-router-dom"
 
 export default function Logout() {
-
+    const navigate = useNavigate()
     useEffect(() => {
         const timer = setTimeout(() => {
             window.location.href = '/';
@@ -29,10 +30,13 @@ export default function Logout() {
         }, { headers: { Authorization: `${token}` } })
             .then(response => {
                 if (response.status === 200) {
+                    localStorage.removeItem('jwtToken');
+                    localStorage.removeItem('persist:userKey');
                     localStorage.clear()
                     console.log(response.data.succMsg)
                     dispatch(checkLoginStatus())
                     console.log("after cookie cleared: ", isLogged)
+                    navigate("https://fatah-bnb.github.io/qimma/")
                 }
             })
             .catch(error => console.log(error));

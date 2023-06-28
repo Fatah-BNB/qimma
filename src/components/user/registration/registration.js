@@ -284,8 +284,7 @@ export default function RegistrationForm() {
                                             value={formik.values.wilaya}
                                             onChange={formik.handleChange}
                                             onBlur={formik.handleBlur}
-                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600
-                                             "
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
                                         >
                                             <option value="">اختر الولاية</option>
                                             {wilayas.map(wilaya => (
