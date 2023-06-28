@@ -7,13 +7,9 @@ export default function AdminManagment() {
     useEffect(() => {
         getAllUsers()
     }, [])
-    const usersData = [
-        { id: 1, name: 'John Doe', userType: 'Admin' },
-        { id: 2, name: 'Jane Smith', userType: 'User' },
-        // Add more user objects as needed
-    ];
 
     const getAllUsers = () => {
+        const token = localStorage.getItem('jwt')
         Axios.get("https://qimma-backend.onrender.com/admin/users", { headers: { Authorization: `${token}` } }).then(response => {
             setUsers(response.data.users)
             console.log(response.data.users)

@@ -10,7 +10,7 @@ const adminSlice = createSlice({
         checkAdminLoginStatus: state => {
             /*const userCookie = Cookies.get('admin')
             userCookie ? state.isLogged = true : state.isLogged = false;*/
-            const token = localStorage.getItem('jwtToken')
+            const token = localStorage.getItem('jwt')
             token ? state.isLogged = true : state.isLogged = false;
         },
     },
