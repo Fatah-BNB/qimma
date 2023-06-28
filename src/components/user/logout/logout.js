@@ -29,6 +29,7 @@ export default function Logout() {
         }, { headers: { Authorization: `${token}` } })
             .then(response => {
                 if (response.status === 200) {
+                    localStorage.removeItem('jwtToken');
                     localStorage.clear()
                     console.log(response.data.succMsg)
                     dispatch(checkLoginStatus())
