@@ -21,7 +21,8 @@ export default function Home() {
     const [searchValue, setSearchValue] = useState('');
 
     const getFields = () => {
-        Axios.get("https://qimma-backend.onrender.com/register/fields")
+        const token = localStorage.getItem('jwtToken')
+        Axios.get("https://qimma-backend.onrender.com/register/fields", { headers: { Authorization: `${token}` } })
             .then(response => {
                 setFields(response.data.fields);
             })
@@ -31,7 +32,8 @@ export default function Home() {
     };
 
     const getStudentCourses = () => {
-        Axios.get("https://qimma-backend.onrender.com/student/enrolled-courses")
+        const token = localStorage.getItem('jwtToken')
+        Axios.get("https://qimma-backend.onrender.com/student/enrolled-courses", { headers: { Authorization: `${token}` } })
             .then(response => {
                 setEnrolledCourses(response.data.results);
                 console.log("student courses - ", response.data.results);
@@ -42,8 +44,9 @@ export default function Home() {
     };
 
     const getPublishedCourses = () => {
+        const token = localStorage.getItem('jwtToken')
         setLoading(true);
-        Axios.get("https://qimma-backend.onrender.com/course/published-courses")
+        Axios.get("https://qimma-backend.onrender.com/course/published-courses", { headers: { Authorization: `${token}` } })
             .then(response => {
                 console.log(response.data.succMsg);
                 console.log(response.data.results);

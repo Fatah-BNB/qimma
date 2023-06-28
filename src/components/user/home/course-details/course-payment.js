@@ -36,10 +36,11 @@ const CoursePayment = () => {
 
     const enroll = async (courseId, cardNumber, cardPassword) => {
         try {
+            const token = localStorage.getItem('jwtToken')
             const response = await Axios.post(`https://qimma-backend.onrender.com/course/enroll-course/${courseId}`, {
                 cardNumber,
                 cardPassword,
-            });
+            }, { headers: { Authorization: `${token}` } });
             const message = response.data.succMsg;
             toast.success(message);
             setTimeout(() => {

@@ -34,13 +34,14 @@ export default function ResetForm() {
       passwordc: Yup.string().oneOf([Yup.ref("password"), null], "passwords must match").required("required"),
   }),
     onSubmit: (values) => {
+      const token = localStorage.getItem('jwtToken')
       console.log(values)
       const url = window.location.href;
       const params = url.split("/").slice(-2);
       console.log(params.join("/"));
       Axios.post("https://qimma-backend.onrender.com/login/password-resetting/"+params.join("/"), {  
       password: formik.values.password,
-      }).then(response => {
+      }, { headers: { Authorization: `${token}` } }).then(response => {
           navigate("/login")
       }).catch(error => {
           document.getElementById("message").innerHTML = error.response.data.errMsg;

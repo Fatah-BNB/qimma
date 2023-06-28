@@ -7,12 +7,13 @@ import toast, { Toaster } from 'react-hot-toast';
 export default function ChangePassword() {
     const [edited, setEdited] = useState(false)
     const changePassword = () => {
+        const token = localStorage.getItem('jwtToken')
         toast.loading("updating password ..")
         Axios.put("https://qimma-backend.onrender.com/profile/edit-user-info/security/password", {
             oldPassword: formik.values.oldPassword,
             newPassword: formik.values.newPassword,
             newPasswordc: formik.values.newPasswordc,
-        }).then(response => {
+        }, { headers: { Authorization: `${token}` } }).then(response => {
             toast.dismiss()
             toast.success(response.data.succMsg)
             setEdited(false)

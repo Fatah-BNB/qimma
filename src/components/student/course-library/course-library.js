@@ -13,7 +13,8 @@ export default function CourseLibrary() {
     const navigate = useNavigate()
     const [courses, setCourses] = useState([])
     const getStudentCourses = () => {
-        Axios.get("https://qimma-backend.onrender.com/student/enrolled-courses").then(response => {
+        const token = localStorage.getItem('jwtToken')
+        Axios.get("https://qimma-backend.onrender.com/student/enrolled-courses", { headers: { Authorization: `${token}` } }).then(response => {
             console.log(response.data.succMsg)
             console.log(response.data.results)
             setCourses(response.data.results)

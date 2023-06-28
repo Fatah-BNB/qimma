@@ -33,7 +33,6 @@ function App() {
   const isLogged = useSelector(state => state.userReducer.isLogged)
   const adminIsLogged = useSelector(state => state.adminReducer.isLogged)
   useEffect(() => {
-
     dispatch(checkLoginStatus())
     dispatch(checkAdminLoginStatus())
     console.log("on mount: ", isLogged)

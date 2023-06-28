@@ -10,7 +10,8 @@ import Footer from '../../user/footer';
 export default function CourseResources() {
     const navigate = useNavigate();
     const getResources = () => {
-        Axios.get(`https://qimma-backend.onrender.com/course/get-course-resources/${location.state.courseId}`)
+        const token = localStorage.getItem('jwtToken')
+        Axios.get(`https://qimma-backend.onrender.com/course/get-course-resources/${location.state.courseId}`, { headers: { Authorization: `${token}` } })
             .then(response => {
                 console.log('COURSE RESOURCES ', response.data.results);
                 setCourseVideoList(response.data.results);
@@ -28,6 +29,7 @@ export default function CourseResources() {
     const [courseVideoList, setCourseVideoList] = useState([]);
 
     const uploadVideo = videoResource => {
+        const token = localStorage.getItem('jwtToken')
         toast.loading('uploading video');
         const formData = new FormData();
         formData.append('videoTitle', videoResource.videoTitle);
@@ -36,7 +38,7 @@ export default function CourseResources() {
         console.log('video ===> ', video);
         console.log('formdata ===> ', formData);
         Axios.post(`https://qimma-backend.onrender.com/course/upload-video/${location.state.courseId}`, formData, {
-            headers: { 'Content-Type': 'multipart/form-data' },
+            headers: { 'Content-Type': 'multipart/form-data', Authorization: `${token}` }
         })
             .then(response => {
                 console.log('UPLOADING VIDEO ??? =====>>>> ', response.data.succMsg);
@@ -133,10 +135,10 @@ export default function CourseResources() {
                     {courseVideoList.map(videoItem => {
                         return <VideoComponent title={videoItem.video_title} description={videoItem.video_description} />;
                     })}
-                    
+
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 }

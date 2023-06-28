@@ -20,7 +20,8 @@ export default function     () {
     const [buttonText, setButtonText] = useState("Change password")
 
     const getAvatar = () => {
-        Axios.get("https://qimma-backend.onrender.com/profile/edit-user-info/getAvatar").then(response => {
+        const token = localStorage.getItem('jwtToken')
+        Axios.get("https://qimma-backend.onrender.com/profile/edit-user-info/getAvatar", { headers: { Authorization: `${token}` } }).then(response => {
             if (response.data.picture) {
                 setImage(response.data.picture)
             } else {
@@ -33,7 +34,8 @@ export default function     () {
     }
 
     const deleteProfilePic = async () => {
-        await Axios.put("https://qimma-backend.onrender.com/profile/edit-user-info/deleteAvatar").then(response => {
+        const token = localStorage.getItem('jwtToken')
+        await Axios.put("https://qimma-backend.onrender.com/profile/edit-user-info/deleteAvatar", { headers: { Authorization: `${token}` } }).then(response => {
             console.log(response.data.succMsg)
             getAvatar()
         }).catch(error => {
@@ -42,10 +44,11 @@ export default function     () {
     }
 
     const uploadProfilePic = (event) => {
+        const token = localStorage.getItem('jwtToken')
         const formData = new FormData();
         formData.append('avatar', event.target.files[0]);
         toast.loading('uploading...');
-        Axios.post("https://qimma-backend.onrender.com/profile/edit-user-info/avatar", formData, { headers: { 'Content-Type': 'multipart/form-data' } }).then(response => {
+        Axios.post("https://qimma-backend.onrender.com/profile/edit-user-info/avatar", formData, { headers: { 'Content-Type': 'multipart/form-data', Authorization: `${token}`} }).then(response => {
             console.log("UPLOADED =====> ", response.data.results)
             toast.dismiss();
             getAvatar()
@@ -58,7 +61,8 @@ export default function     () {
     }
 
     const getWialayas = () => {
-        Axios.get("https://qimma-backend.onrender.com/register/wilayas").then(response => {
+        const token = localStorage.getItem('jwtToken')
+        Axios.get("https://qimma-backend.onrender.com/register/wilayas", { headers: { Authorization: `${token}` } }).then(response => {
             setwilayas(response.data.wilayas)
         }).catch(error => {
             console.log("ERR fetching tiers --> ", error.response.data.errMsg)
@@ -66,7 +70,8 @@ export default function     () {
     }
 
     const updateInfo = () => {
-        Axios.put("https://qimma-backend.onrender.com/profile/edit-user-info", { user: formik.values }).then(response => {
+        const token = localStorage.getItem('jwtToken')
+        Axios.put("https://qimma-backend.onrender.com/profile/edit-user-info", { user: formik.values }, { headers: { Authorization: `${token}` } }).then(response => {
             toast.success(response.data.succMsg)
         }).catch(error => {
             toast.error(error.response.data.errMsg)
@@ -74,7 +79,8 @@ export default function     () {
     }
 
     const getUserInfo = () => {
-        Axios.get("https://qimma-backend.onrender.com/profile").then(async response => {
+        const token = localStorage.getItem('jwtToken')
+        Axios.get("https://qimma-backend.onrender.com/profile", { headers: { Authorization: `${token}` } }).then(async response => {
             await dispatch(fetchUserData(response.data.results))
             console.log("response ==> ", response.data.results)
         }).then(error => {

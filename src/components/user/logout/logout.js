@@ -23,9 +23,10 @@ export default function Logout() {
     })
     const isLogged = useSelector(state => state.userReducer.isLogged)
     const logout = () => {
+        const token = localStorage.getItem('jwtToken')
         Axios.post('https://qimma-backend.onrender.com/logout', null, {
             withCredentials: true
-        })
+        }, { headers: { Authorization: `${token}` } })
             .then(response => {
                 if (response.status === 200) {
                     localStorage.clear()

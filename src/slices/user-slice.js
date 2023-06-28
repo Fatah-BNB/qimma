@@ -14,8 +14,9 @@ const userSlice = createSlice({
     },
     reducers: {
         checkLoginStatus: (state) => {
-            const userCookie = Cookies.get('user')
-            userCookie ? state.isLogged = true : state.isLogged = false;
+            // const userCookie = Cookies.get('user')
+            const token = localStorage.getItem('jwtToken')
+            token ? state.isLogged = true : state.isLogged = false;
         },
         fetchUserData: (state, action) => {
             state.firstname = action.payload.user_firstName

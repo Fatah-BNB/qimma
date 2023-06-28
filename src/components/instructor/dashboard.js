@@ -18,7 +18,8 @@ export default function InstrcutorDashboard() {
 
 
     const getInsights = () => {
-        Axios.get("https://qimma-backend.onrender.com/instructor/instructor-dashboard/courses-insights").then(response => {
+        const token = localStorage.getItem('jwtToken')
+        Axios.get("https://qimma-backend.onrender.com/instructor/instructor-dashboard/courses-insights", { headers: { Authorization: `${token}` } }).then(response => {
             console.log(response.data.results)
             setAllCourses(response.data.results)
             setCoursesNumber(response.data.results.length)

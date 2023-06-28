@@ -19,9 +19,10 @@ export default function LoginForm() {
   // const isLogged = useSelector(state => state.userReducer.isLogged)
   const [notConfirmed, setNotConfirmed] = useState(false)
   const resendEmail = () => {
+    const token = localStorage.getItem('jwtToken')
     Axios.post("https://qimma-backend.onrender.com/login/resend-email-verification", {
       email: formik.values.email
-    }).then(response => {
+    }, { headers: { Authorization: `${token}` } }).then(response => {
       toast.success(response.data.succMsg)
     }).catch(error => {
       toast.error(error.response.data.errMsg)
@@ -29,12 +30,13 @@ export default function LoginForm() {
   }
   const myState = useSelector(state => state.userReducer.email)
   const login = () => {
+    const token = localStorage.getItem('jwtToken')
     Axios.post("https://qimma-backend.onrender.com/login", {
       email: formik.values.email,
-      password: formik.values.password,
+      password: formik.values.password,  
     }, {
       withCredentials: true // allow sending cookies
-    }).then(async (response) => {
+    }, { headers: { Authorization: `${token}` } }).then(async (response) => {
       console.log("DATA ---> ", response.data)
       await dispatch(checkLoginStatus()) 
       console.log("STATE ----> ", myState)
@@ -64,9 +66,10 @@ export default function LoginForm() {
   })
 
   const forgotPassword = () => {
+    const token = localStorage.getItem('jwtToken')
     Axios.post("https://qimma-backend.onrender.com/login/password-resetting", {
       email: formik.values.email,
-    }).then(response => {
+    }, { headers: { Authorization: `${token}` } }).then(response => {
       document.getElementById("login-mssg").innerHTML = response.response.data.succMsg;
     }).catch(error => {
       document.getElementById("login-mssg").innerHTML = error.response.data.errMsg;

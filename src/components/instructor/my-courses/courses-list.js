@@ -13,7 +13,8 @@ import Footer from '../../user/footer'
 export default function CoursesList() {
     const [courses, setCourses] = useState([])
     const deleteCourse = (courseId) => {
-        Axios.delete(`https://qimma-backend.onrender.com/manage-courses/${courseId}`).then(response => {
+        const token = localStorage.getItem('jwtToken')
+        Axios.delete(`https://qimma-backend.onrender.com/manage-courses/${courseId}`, { headers: { Authorization: `${token}` } }).then(response => {
             toast.success(response.data.succMsg)
             getCourses()
         }).catch(error => {
@@ -21,7 +22,8 @@ export default function CoursesList() {
         })
     }
     const getCourses = () => {
-        Axios.get("https://qimma-backend.onrender.com/manage-courses/my-courses").then(response => {
+        const token = localStorage.getItem('jwtToken')
+        Axios.get("https://qimma-backend.onrender.com/manage-courses/my-courses", { headers: { Authorization: `${token}` } }).then(response => {
             console.log("COURSES RESULTS: ", response.data.results)
             setCourses(response.data.results)
         }).catch(error => {
@@ -29,7 +31,8 @@ export default function CoursesList() {
         })
     }
     const publishCourse = (courseId) => {
-        Axios.put("https://qimma-backend.onrender.com/manage-courses/publish-course", { courseId }).then(response => {
+        const token = localStorage.getItem('jwtToken')
+        Axios.put("https://qimma-backend.onrender.com/manage-courses/publish-course", { courseId }, { headers: { Authorization: `${token}` } }).then(response => {
             console.log(response.data.succMsg)
             toast.success(response.data.succMsg)
             getCourses()

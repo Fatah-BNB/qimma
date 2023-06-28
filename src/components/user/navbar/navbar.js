@@ -31,12 +31,14 @@ export default function NavBar() {
         console.log("Navbar changed: ", isLogged)
     })
     const getProfilePic = () => {
-        Axios.get("https://qimma-backend.onrender.com/profile/edit-user-info/getAvatar").then(response => {
+        const token = localStorage.getItem('jwtToken')
+        Axios.get("https://qimma-backend.onrender.com/profile/edit-user-info/getAvatar", { headers: { Authorization: `${token}` } }).then(response => {
             setProfilePic(response.data.picture)
         })
     }
     const getUserType = () => {
-        Axios.get("https://qimma-backend.onrender.com/user-type").then(response => {
+        const token = localStorage.getItem('jwtToken')
+        Axios.get("https://qimma-backend.onrender.com/user-type", { headers: { Authorization: `${token}` } }).then(response => {
             setUserType(response.data.userType)
         })
     }

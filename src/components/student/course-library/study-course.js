@@ -12,7 +12,8 @@ export default function StudyCourse() {
     const [rating, setRating] = useState(0);
 
     const getCourse = (courseId) => {
-        Axios.get(`https://qimma-backend.onrender.com/course/${courseId}/course-details`)
+        const token = localStorage.getItem('jwtToken')
+        Axios.get(`https://qimma-backend.onrender.com/course/${courseId}/course-details`, { headers: { Authorization: `${token}` } })
             .then((response) => {
                 console.log('COURSE DETAILS ------------\n', response.data.results);
                 setCourse(response.data.results[0]);
@@ -24,7 +25,8 @@ export default function StudyCourse() {
     };
 
     const getCourseRating = (courseId) => {
-        Axios.get(`https://qimma-backend.onrender.com/student/course-rating/${courseId}`)
+        const token = localStorage.getItem('jwtToken')
+        Axios.get(`https://qimma-backend.onrender.com/student/course-rating/${courseId}`, { headers: { Authorization: `${token}` } })
             .then((response) => {
                 console.log('COURSE RATING ------------\n', response.data.succMsg);
                 setRating(response.data.rating[0].course_rating)
@@ -35,7 +37,8 @@ export default function StudyCourse() {
     };
 
     const getCourseResources = (courseId) => {
-        Axios.get(`https://qimma-backend.onrender.com/student/course-resources/${courseId}`)
+        const token = localStorage.getItem('jwtToken')
+        Axios.get(`https://qimma-backend.onrender.com/student/course-resources/${courseId}`, { headers: { Authorization: `${token}` } })
             .then((response) => {
                 console.log('COURSE RESOURCES ============= \n', response.data.results);
                 setCourseVideos(response.data.results);
@@ -59,8 +62,9 @@ export default function StudyCourse() {
     };
 
     const handleRatingChange = (newRating) => {
+        const token = localStorage.getItem('jwtToken')
         setRating(newRating);
-        Axios.put(`https://qimma-backend.onrender.com/student/rate-course/${location.state.courseId}`, { course_rating: newRating }).then(response => {
+        Axios.put(`https://qimma-backend.onrender.com/student/rate-course/${location.state.courseId}`, { course_rating: newRating }, { headers: { Authorization: `${token}` } }).then(response => {
             console.log(response.data.succMsg)
         }).catch(error => {
             console.log(error.response.data.errMsg)
