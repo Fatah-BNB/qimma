@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/qimma/static/css/main.bd24abb9.css",
-    "main.js": "/qimma/static/js/main.9bbeaf50.js",
+    "main.js": "/qimma/static/js/main.9a37e9a3.js",
     "static/js/787.cda612ba.chunk.js": "/qimma/static/js/787.cda612ba.chunk.js",
     "static/media/checknote-toplanding.svg": "/qimma/static/media/checknote-toplanding.964614ba58a69a8ff669519d13aebf69.svg",
     "static/media/deskkid-toplanding.svg": "/qimma/static/media/deskkid-toplanding.a7c8df9a5a6f0d95e7fe3287e3a5f9a5.svg",
@@ -22,11 +22,11 @@
     "static/media/GraduationCap.svg": "/qimma/static/media/GraduationCap.016bf531282e486772c6878d82e9af8c.svg",
     "index.html": "/qimma/index.html",
     "main.bd24abb9.css.map": "/qimma/static/css/main.bd24abb9.css.map",
-    "main.9bbeaf50.js.map": "/qimma/static/js/main.9bbeaf50.js.map",
+    "main.9a37e9a3.js.map": "/qimma/static/js/main.9a37e9a3.js.map",
     "787.cda612ba.chunk.js.map": "/qimma/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bd24abb9.css",
-    "static/js/main.9bbeaf50.js"
+    "static/js/main.9a37e9a3.js"
   ]
 }
