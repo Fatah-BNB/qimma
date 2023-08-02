@@ -19,7 +19,7 @@ const CreatedCourseCard = ({ title, date, description, image, price, published, 
                 <div className="flex flex-row w-full justify-between items-center p-2 border-t-gray-400 border-t-2">
                     <p className="text-left">{date}</p>
                     <div className='flex w-1/2 flex-row justify-end space-x-2 text-white'>
-                        {coursePublished === 0 ? <button onClick={publishCourse} className="w-16 bg-blue-500 p-1 rounded-md hover:text-white hover:bg-primary duration-300">نشرlogou</button> : null}
+                        {coursePublished === 0 ? <button onClick={publishCourse} className="w-16 bg-blue-500 p-1 rounded-md hover:text-white hover:bg-primary duration-300">نشر</button> : null}
                         <button onClick={edit} className="w-16 bg-blue-500 p-1 rounded-md hover:text-white hover:bg-primary duration-300">تعديل</button>
                         <button onClick={deleteCourse} className="w-16 bg-blue-500 p-1 rounded-md hover:text-white hover:bg-primary duration-300">حذف</button>
                     </div>

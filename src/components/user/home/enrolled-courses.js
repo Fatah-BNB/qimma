@@ -19,13 +19,13 @@ const EnrolledCourseCard = ({ bannerImg, title, price, instructor, goToCourse })
             <div className="flex flex-col py-4 justify-between h-[45%] text-right">
                 <h3 className="text-text font-bold text-2xl">{title}</h3>
                 <p className="text-text text-lg"><span > </span>{instructor}</p>
-                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-400 duration-500 group-hover/card:bg-gray-700">
+                {/* <div class="w-full bg-gray-200 rounded-full dark:bg-gray-400 duration-500 group-hover/card:bg-gray-700">
                     <div
                         className={percentage+'w-1/2  bg-accent animate-progressload ease-in-out float-right text-[0.6rem] font-medium text-blue-100 text-center p-0.5 leading-none rounded-full'}
                     >
                         {rand}</div>
                 </div>
-                <p className="text-text text-sm text-left">لقد أتممت ثلاث دروس</p>
+                <p className="text-text text-sm text-left">لقد أتممت ثلاث دروس</p> */}
 
             </div>
         </div>

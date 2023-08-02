@@ -23,6 +23,11 @@ export default function NavBar() {
         userType === "instructor" && { name: 'فضاء الأستاذ', href: '/instructor-my-courses', current: false },
         userType === "student" && { name: 'دوراتي', href: '/course-library', current: false },
     ]
+    const navigationClosed = [
+        { name: 'الصفحة الرئيسية', href: 'https://fatah-bnb.github.io/qimma/#/home', current: false },
+        userType === "instructor" && { name: 'فضاء الأستاذ', href: 'https://fatah-bnb.github.io/qimma/#/instructor-my-courses', current: false },
+        userType === "student" && { name: 'دوراتي', href: 'https://fatah-bnb.github.io/qimma/#/course-library', current: false },
+    ]
 
     const dispatch = useDispatch()
     useEffect(() => {
@@ -170,7 +175,7 @@ export default function NavBar() {
 
                     <Disclosure.Panel className="sm:hidden">
                         <div className="space-y-1 px-2 pb-3 pt-2">
-                            {navigation.map((item) => (
+                            {navigationClosed.map((item) => (
                                 <Disclosure.Button
                                     key={item.name}
                                     as="a"

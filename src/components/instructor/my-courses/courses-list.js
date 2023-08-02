@@ -9,8 +9,10 @@ import NavBar from '../../user/navbar/navbar'
 import BottomBar from '../bottom-bar'
 import CreatedCourseCard from '../created-course-card'
 import Footer from '../../user/footer'
+import ReactLoading from 'react-loading';
 
 export default function CoursesList() {
+    const [loading, setLoading] = useState(true);
     const [courses, setCourses] = useState([])
     const deleteCourse = (courseId) => {
         const token = localStorage.getItem('jwtToken')
@@ -22,10 +24,12 @@ export default function CoursesList() {
         })
     }
     const getCourses = () => {
+        setLoading(true)
         const token = localStorage.getItem('jwtToken')
         Axios.get("https://qimma-backend.onrender.com/manage-courses/my-courses", { headers: { Authorization: `${token}` } }).then(response => {
             console.log("COURSES RESULTS: ", response.data.results)
             setCourses(response.data.results)
+            setLoading(false)
         }).catch(error => {
             console.log("ERROR RETREIVING COURSES: ", error)
         })
@@ -50,10 +54,14 @@ export default function CoursesList() {
     }, [])
     return (
         <div>
-            <NavBar/>
-            <BottomBar/>
+            <NavBar />
+            <BottomBar />
             <Toaster />
-            <div className='flex items-start flex-wrap p-8 bg-primary'>
+            {loading ? (
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                    <ReactLoading type={'spin'} color={'#007bff'} height={100} width={100} />
+                </div>
+            ) : <div className='flex items-start flex-wrap p-8 bg-primary'>
                 {courses.length > 0 ?
                     courses.map((course) => {
                         return (
@@ -66,13 +74,13 @@ export default function CoursesList() {
                                 published={course.published}
                                 publishCourse={() => { publishCourse(course.course_id) }}
                                 deleteCourse={() => { deleteCourse(course.course_id) }}
-                                edit={() => {navigate("/instructor-course-resources", {state: {courseId: course.course_id}})}}
+                                edit={() => { navigate("/instructor-course-resources", { state: { courseId: course.course_id } }) }}
                             />
                         )
-                    }) : <h1>You are student</h1>
+                    }) : <h1>لم تقم بإنشاء أي دورة بعد</h1>
                 }
-            </div>
-            <Footer/>
+            </div>}
+            <Footer />
         </div>
     )
 }

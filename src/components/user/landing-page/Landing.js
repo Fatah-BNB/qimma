@@ -23,6 +23,7 @@ import toast, { Toaster } from 'react-hot-toast';
 export default function Landing() {
     useEffect(() => {
         console.log("Landing mounted")
+        toast("هذا الموقع هو نموذج تجريبي لعرض الوظائف الرئيسية، وقد لا يكون أداء الموقع سريعاً بسبب كونه نموذج تجريبي")
     })
 
     const navigate = useNavigate();
@@ -39,18 +40,18 @@ export default function Landing() {
         <div className="bg-[#FAFAFF] ">
         <Toaster/>
             <div id="topdiv" className="absolute top-0 left-0 bottom-0 right-0 bg-primary "></div>
-            <div className="h-screen top-0 left-0 relative">
+            <div className="h-screen md:bg-transparent bg-primary top-0 left-0 relative">
                 <nav class="flex items-center justify-between font-bold h-36">
-                    <div className="flex items-center justify-center w-[30%]">
+                    <div className="md:flex items-center justify-center w-[30%] hidden">
                         <ul class="flex space-x-12">
                             <li onClick={handleRegister} className="cursor-pointer text-text text-2xl  rounded-lg bg-secondary px-2">التسجيل</li>
                             <li onClick={handleLogin} className="cursor-pointer text-text text-2xl ">الدخول</li>
                         </ul>
                     </div>
-                    <div className="flex items-center justify-between px-24 w-[70%]">
-                        <ul class="flex space-x-8 items-center">
+                    <div className="flex items-center md:justify-between justify-center md:px-24 md:w-[70%] w-full">
+                        <ul class="md:flex space-x-8 items-center hidden">
                             <li onClick={handleRegister} className="cursor-pointer text-white text-2xl">انضم كأستاذ</li>
-                            <li className="h-1 bg-opacity-40 w-64 bg-white text-2xl rounded-2xl"></li>
+                            {/* <li className="h-1 bg-opacity-40 w-64 bg-white text-2xl rounded-2xl"></li> */}
                             {/* <li className="text-white text-2xl">من نحن؟</li> */}
                         </ul>
                         <div class="flex items-center">
@@ -60,7 +61,7 @@ export default function Landing() {
                 </nav>
                 <div class="flex">
 
-                    <div class="w-1/2 flex flex-col justify-center items-center pl-8 pb-8">
+                    <div class="w-1/2 md:flex hidden flex-col justify-center items-center pl-8 pb-8">
                         <div className="flex flex-row justify-center items-center">
                             <img src={group2} alt="top landing" className="w-3/5 "></img>
                             <div className="flex items-center justify-center w-2/5 animate-fade-up ">
@@ -73,9 +74,9 @@ export default function Landing() {
                             <img src={group4} alt="top landing" className="w-3/4 "></img>
                         </div>
                     </div>
-                    <div class="p-24 w-1/2 flex flex-col items-end justify-center space-y-7 h-[80vh]">
+                    <div class="p-24 md:w-1/2 flex flex-col items-end justify-center space-y-7 h-[80vh] ">
                         <p class="text-sm font-bold text-text rounded-lg bg-white p-2">  أهلا بيك  في قمة  👋   </p>
-                        <p class="text-7xl font-bold text-white text-right">أكبر منصة تعليمية رسمية في الجزائر  </p>
+                        <p class="text-6xl font-bold text-white text-right">أكبر منصة تعليمية رسمية في الجزائر  </p>
                         <p class="text-sm py-8 font-bold text-white">أكبر منصة تعليمية رسمية في الجزائر  </p>
                         <div className="flex w-full justify-between">
                             <div class="w-0 h-0 
@@ -90,10 +91,10 @@ export default function Landing() {
                 </div>
             </div>
 
-            <div className="flex flex-col items-center justify-center h-48">
-                <ul class="flex space-x-32">
-                    <li className="">
-                        <div class="flex">
+            <div className="flex flex-col items-center justify-center min-h-48">
+                <ul class="flex flex-wrap justify-around">
+                    <li className="m-8">
+                        <div class="flex ">
                             <div className="flex items-center">
                                 <img src={item1} alt="Image" class=" w-20 h-20 p-5 bg-primary rounded-full" />
                             </div>
@@ -103,7 +104,7 @@ export default function Landing() {
                             </div>
                         </div>
                     </li>
-                    <li className="">
+                    <li className="m-8">
                         <div class="flex">
                             <div className="flex items-center">
                                 <img src={item2} alt="Image" class="w-20 h-20 p-5 bg-secondary rounded-full" />
@@ -114,7 +115,7 @@ export default function Landing() {
                             </div>
                         </div>
                     </li>
-                    <li className="">
+                    <li className="m-8">
                         <div class="flex">
                             <div className="flex items-center">
                                 <img src={item3} alt="Image" class="w-20 h-20 p-5 bg-[#FD9B79] rounded-full" />
@@ -125,7 +126,7 @@ export default function Landing() {
                             </div>
                         </div>
                     </li>
-                    <li className="">
+                    <li className="m-8">
                         <div class="flex">
                             <div className="flex items-center">
                                 <img src={item4} alt="Image" class="w-20 h-20 p-5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" />

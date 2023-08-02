@@ -169,7 +169,7 @@ export default function     () {
                                         Photo
                                     </label>
                                     <div className="mt-2 flex flex-col items-center gap-x-3">
-                                        <img src={image} alt="profile picture" className="h-72` w-72 rounded-full object-cover text-gray-300" aria-hidden="true" />
+                                        <img src={image} alt="profile picture" className="h-72 w-72 rounded-full object-cover bg-gray-200 text-gray-300" aria-hidden="true" />
                                         <div className="mt-2 flex items-center space-x-4">
                                             <button
                                                 onClick={changeProfilePic}

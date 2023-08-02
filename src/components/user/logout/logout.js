@@ -30,16 +30,15 @@ export default function Logout() {
         }, { headers: { Authorization: `${token}` } })
             .then(response => {
                 if (response.status === 200) {
-                    localStorage.removeItem('jwtToken');
-                    localStorage.removeItem('persist:userKey');
+                    localStorage.removeItem('jwtToken'); 
                     localStorage.clear()
                     console.log(response.data.succMsg)
                     dispatch(checkLoginStatus())
                     console.log("after cookie cleared: ", isLogged)
-                    navigate("https://fatah-bnb.github.io/qimma/")
+                    navigate("/")
                 }
             })
-            .catch(error => console.log(error));
+            .catch(error => console.log("Error logout: ", error));
     }
     return (
         <div className="">

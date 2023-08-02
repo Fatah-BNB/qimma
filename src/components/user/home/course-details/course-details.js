@@ -79,14 +79,14 @@ export default function CourseDetails() {
                         <p>{course.tier_name}</p>
                         <div className='flex flex-col pt-6'>
                             <p className='font-bold text-3xl text-center'>{course.course_price}DA  (السعر)</p>
-                            {enrolled === false ? <button onClick={() => { payCourse(course.course_title, course.course_price, course.course_id) }} className="w-full p-2 rounded-md text-text hover:bg-yellow-500 bg-secondary">Enroll</button> : <button className="p-2 rounded-md text-text hover:bg-yellow-500 bg-secondary" onClick={() => { navigate("/course-library") }}>Go to library</button>}
+                            {enrolled === false ? <button onClick={() => { payCourse(course.course_title, course.course_price, course.course_id) }} className="w-full p-2 rounded-md text-text hover:bg-yellow-500 bg-secondary">سجل</button> : <button className="p-2 rounded-md text-text hover:bg-yellow-500 bg-secondary" onClick={() => { navigate("/course-library") }}>افتح دوراتي</button>}
                         </div>
                     </div>
                     <div className="w-5/6 text-2xl px-12 rounded-br-xl bg-white p-4">
                         <p className='text-primary font-bold text-4xl '>{course.course_title}</p>
-                        <p className='text-accent pb-2'>{course.user_firstName + " " + course.user_lastName} (الأساتذة)</p>
+                        <p className='text-accent pb-2'>{course.user_firstName + " " + course.user_lastName} (ة)الأستــاذ</p>
                         <p className='pb-4 border-b-gray-400 border-b-2'>{course.course_description}</p>
-                        <p>{course.field_name} (المادة)</p>
+                        <p>{course.field_name} </p>
                         <p>{course.course_created_date}</p>
                     </div>
                 </div>

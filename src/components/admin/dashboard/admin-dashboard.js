@@ -32,7 +32,7 @@ export default function AdminDashboard() {
         getNumberOfVideos()
     }, [])
     const getNumberOfVideos = () => {
-        const token = localStorage.get('jwt')
+        const token = localStorage.getItem('jwt')
         Axios.get("https://qimma-backend.onrender.com/admin/count-uploads?resource=video", { headers: { Authorization: `${token}` } }).then(response => {
             setVideoNumber(response.data.nbrUplaods)
             console.log(response.data.nbrUplaods)
@@ -41,7 +41,7 @@ export default function AdminDashboard() {
         })
     }
     const getUsersPerWilaya = () => {
-        const token = localStorage.get('jwt')
+        const token = localStorage.getItem('jwt')
         Axios.get("https://qimma-backend.onrender.com/admin/count-users-PerWilaya", { headers: { Authorization: `${token}` } }).then(response => {
             setUserPerWilaya(response.data.nbrUsersPerWilaya)
             console.log(response.data.nbrUsersPerWilaya)
@@ -50,7 +50,7 @@ export default function AdminDashboard() {
         })
     }
     const getUsersCount = () => {
-        const token = localStorage.get('jwt')
+        const token = localStorage.getItem('jwt')
         Axios.get("https://qimma-backend.onrender.com/admin/users-count", { headers: { Authorization: `${token}` } }).then(response => {
             setUsersNumber(response.data.nbrUsers)
         }).catch(error => {
@@ -58,7 +58,7 @@ export default function AdminDashboard() {
         })
     }
     const getStudentCount = () => {
-        const token = localStorage.get('jwt')
+        const token = localStorage.getItem('jwt')
         Axios.get("https://qimma-backend.onrender.com/admin/users-count?type=student", { headers: { Authorization: `${token}` } }).then(response => {
             setStudentNumber(response.data.nbrUsers)
         }).catch(error => {
@@ -66,7 +66,7 @@ export default function AdminDashboard() {
         })
     }
     const getInstructorCount = () => {
-        const token = localStorage.get('jwt')
+        const token = localStorage.getItem('jwt')
         Axios.get("https://qimma-backend.onrender.com/admin/users-count?type=instructor", { headers: { Authorization: `${token}` } }).then(response => {
             setInstructorsNumber(response.data.nbrUsers)
         }).catch(error => {
@@ -74,7 +74,7 @@ export default function AdminDashboard() {
         })
     }
     const getTotalCourses = () => {
-        const token = localStorage.get('jwt')
+        const token = localStorage.getItem('jwt')
         Axios.get("https://qimma-backend.onrender.com/admin/courses-count", { headers: { Authorization: `${token}` } }).then(response => {
             setCoursesNumber(response.data.nbrCourses)
         }).catch(error => {
@@ -82,7 +82,7 @@ export default function AdminDashboard() {
         })
     }
     const getIncome = () => {
-        const token = localStorage.get('jwt')
+        const token = localStorage.getItem('jwt')
         Axios.get("https://qimma-backend.onrender.com/admin/total-income", { headers: { Authorization: `${token}` } }).then(response => {
             setIncome(response.data.totalIncome)
         }).catch(error => {
@@ -90,7 +90,7 @@ export default function AdminDashboard() {
         })
     }
     const getCoursesCountPerTier = () => {
-        const token = localStorage.get('jwt')
+        const token = localStorage.getItem('jwt')
         Axios.get("https://qimma-backend.onrender.com/admin/tier-courses-count", { headers: { Authorization: `${token}` } }).then(response => {
             const tiers = []
             const coursesPerTier = []
@@ -105,7 +105,7 @@ export default function AdminDashboard() {
         })
     }
     const getCoursesCountPerField = () => {
-        const token = localStorage.get('jwt')
+        const token = localStorage.getItem('jwt')
         Axios.get("https://qimma-backend.onrender.com/admin/field-courses-count").then(response => {
             const fields = []
             const coursesPerField = []
@@ -120,7 +120,7 @@ export default function AdminDashboard() {
         })
     }
     const getCoursesPerMonth = () => {
-        const token = localStorage.get('jwt')
+        const token = localStorage.getItem('jwt')
         Axios.get("https://qimma-backend.onrender.com/admin/month-courses-count").then(response => {
             const date = new Date();
             const months = []
@@ -141,7 +141,7 @@ export default function AdminDashboard() {
         })
     }
     const getStudentsPereTier = () => {
-        const token = localStorage.get('jwt')
+        const token = localStorage.getItem('jwt')
         Axios.get("https://qimma-backend.onrender.com/admin/count-student-perTier").then(response => {
             const students = []
             console.log("STUDENTS : ", response.data.nbrStudentPerTier)

@@ -58,14 +58,14 @@ const CoursePayment = () => {
             <Toaster />
             <div className='h-[70vh] bg-primary flex justify-center items-center'>
                 <div className="w-96 p-4 bg-white shadow-md rounded-lg">
-                    <p className="text-2xl text-left font-bold mb-4">Course title: {courseTitle}</p>
+                    <p className="text-2xl text-left font-bold mb-4"> {courseTitle}  عنوان الدرس</p>
                     <p className="text-xl text-center font-semibold">{amount}DA</p>
                     <p className="text-xl text-center opacity-70 font-semibold">Taxe:   0% x</p>
                     <p className="text-xl text-center font-semibold mb-4 pt-4 border-t-gray-400 border-t-2">Price: <span className='text-secondary'>{amount}DA</span></p>
                     <form onSubmit={formik.handleSubmit}>
                         <div className="mb-4">
                             <label className="block mb-2 text-sm font-semibold text-gray-700" htmlFor="cardNumber">
-                                Card Number:
+                                رقم البطاقة
                             </label>
                             <input
                                 id="cardNumber"
@@ -82,7 +82,7 @@ const CoursePayment = () => {
                         </div>
                         <div className="mb-4">
                             <label className="block mb-2 text-sm font-semibold text-gray-700" htmlFor="cardPassword">
-                                Card Password:
+                                كلمة مرور البطاقة
                             </label>
                             <input
                                 id="cardPassword"
@@ -102,7 +102,7 @@ const CoursePayment = () => {
                             disabled={!formik.isValid}
                             className="w-full px-4 py-2 text-white bg-primary rounded"
                         >
-                            Buy Course
+                            أشتري الدرس
                         </button>
                     </form>
                 </div>

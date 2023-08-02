@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react"
 import { useFormik } from "formik"
 import Axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import * as Yup from "yup"
 import { useDispatch, useSelector } from "react-redux"
 import { checkLoginStatus } from "../../../slices/user-slice"
 import NavBar from "../../user/navbar/navbar"
 import toast, { Toaster } from 'react-hot-toast';
+import ReactLoading from 'react-loading';
 
 import "./../style.css"
 import item1 from "../../../icons/mountain.svg"
 
 export default function LoginForm() {
+  const [loading, setLoading] = useState(false);
+  const handleRegister = () => {
+    navigate('/register');
+  }
   useEffect(() => {
     console.log("Login mounted")
   })
@@ -30,6 +35,7 @@ export default function LoginForm() {
   }
   const myState = useSelector(state => state.userReducer.email)
   const login = () => {
+    setLoading(true)
     Axios.post("https://qimma-backend.onrender.com/login", {
       email: formik.values.email,
       password: formik.values.password,
@@ -41,11 +47,13 @@ export default function LoginForm() {
       console.log("headers ---> ", response.headers)
       await dispatch(checkLoginStatus())
       console.log("STATE ----> ", myState)
+      setLoading(false)
       // console.log("IS LOGGED --> ", isLogged)
       navigate("/home")
     }).catch((error) => {
       toast.error(error.response.data.errMsg)
       setNotConfirmed(true)
+      setLoading(false)
     })
   }
   const navigate = useNavigate()
@@ -87,7 +95,7 @@ export default function LoginForm() {
       <div class="text-right h-[85vh] flex flex-col items-center justify-center bg-gray-50">
         <div class="flex flex-col bg-white drop-shadow-2xl shadow-lg px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-3xl w-full max-w-xl">
           <div class="font-medium self-center text-xl sm:text-2xl uppercase text-gray-500">
-            <p class="font-bold text-primary text-4xl">Qimma <span className="text-secondary">|</span> قمة</p>
+            <Link to="/"><p class="font-bold text-primary text-4xl">Qimma <span className="text-secondary">|</span> قمة</p></Link>
           </div>
           <div class="relative mt-10 h-px bg-gray-300">
             <div class="absolute left-0 top-0 flex justify-center w-full -mt-2">
@@ -145,27 +153,30 @@ export default function LoginForm() {
                 </div>
               </div>
 
-              <div class="flex w-full">
-                <button type="submit" class="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-primary hover:bg-accent rounded py-2 w-full transition duration-150 ease-in">
-                  <span class="mr-2 uppercase">الدخول</span>
-                  <span>
-                    <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                      <path d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </span>
-                </button>
+              <div class="flex w-full items-center justify-center">
+                {loading ?
+                  <div><ReactLoading type={'spin'} color={'#007bff'} height={25} width={25} /></div> :
+                  <button type="submit" class="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-primary hover:bg-accent rounded py-2 w-full transition duration-150 ease-in">
+                    <span class="mr-2 uppercase">الدخول</span>
+                    <span>
+                      <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </span>
+                  </button>}
               </div>
             </form>
           </div>
           <div class="flex justify-center items-center mt-6">
-            <a href="#" target="_blank" class="inline-flex items-center font-bold text-accent hover:text-primary text-xs text-center">
+            <Link to="/register" class="inline-flex items-center font-bold text-accent hover:text-primary text-xs text-center">
               <span>
                 <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                 </svg>
               </span>
-              <span onClick={() => { navigate("/register") }} class="ml-2">ليس لديك حساب؟</span>
-            </a>
+              <span onClick={handleRegister} class="ml-2">ليس لديك حساب؟</span>
+            </Link>
+
           </div>
         </div>
       </div>
