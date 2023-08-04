@@ -52,7 +52,7 @@ export default function LoginForm() {
       navigate("/home")
     }).catch((error) => {
       // toast.error(error.response.data.errMsg)
-      toast.error("Email or password incorrectz")
+      toast.error("Email or password incorrect")
       setNotConfirmed(true)
       setLoading(false)
     })

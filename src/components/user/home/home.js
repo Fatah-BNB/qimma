@@ -90,23 +90,6 @@ export default function Home() {
                 </div>
             ) : (
                 <div className="flex flex-col bg-primary">
-                    <div className="flex flex-col space-y-2 bg-[#ebf5ff]">
-                        <p className="w-full text-right font-bold text-2xl p-8 pb-0"> الطلاب يشاهدون</p>
-                        <div className="flex flex-no-wrap overflow-x-scroll select-none scroll-touch items-start flex-row-reverse space-x-reverse space-x-8 p-8 ">
-                            {courses.slice(1, -1).map(course => (
-                                <PublishedCourseCard
-                                    key={course.course_id}
-                                    id={course.course_id}
-                                    bannerImg={course.course_picture ? course.course_picture : BannerPlaceholder}
-                                    title={course.course_title}
-                                    price={course.course_price}
-                                    instructor={course.user_firstName + " " + course.user_lastName}
-                                    field={course.field_name}
-                                    goToCourse={() => { goToCourse(course.course_id) }}
-                                />
-                            ))}
-                        </div>
-                    </div>
                     {/* Enrolled Courses Section */}
                     {enrolledCourses.length > 0 &&
                         <div>
@@ -168,6 +151,23 @@ export default function Home() {
                     </div>
 
                     {/* Additional Sections */}
+                    <div className="flex flex-col space-y-2 bg-[#ebf5ff]">
+                        <p className="w-full text-right font-bold text-2xl p-8 pb-0"> الطلاب يشاهدون</p>
+                        <div className="flex flex-no-wrap overflow-x-scroll select-none scroll-touch items-start flex-row-reverse space-x-reverse space-x-8 p-8 ">
+                            {courses.slice(1, -1).map(course => (
+                                <PublishedCourseCard
+                                    key={course.course_id}
+                                    id={course.course_id}
+                                    bannerImg={course.course_picture ? course.course_picture : BannerPlaceholder}
+                                    title={course.course_title}
+                                    price={course.course_price}
+                                    instructor={course.user_firstName + " " + course.user_lastName}
+                                    field={course.field_name}
+                                    goToCourse={() => { goToCourse(course.course_id) }}
+                                />
+                            ))}
+                        </div>
+                    </div>
                 </div>
             )}
             <Footer />
