@@ -51,7 +51,8 @@ export default function LoginForm() {
       // console.log("IS LOGGED --> ", isLogged)
       navigate("/home")
     }).catch((error) => {
-      toast.error(error.response.data.errMsg)
+      // toast.error(error.response.data.errMsg)
+      toast.error("Email or password incorrectz")
       setNotConfirmed(true)
       setLoading(false)
     })
