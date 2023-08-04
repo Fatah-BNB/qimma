@@ -38,7 +38,11 @@ export default function NavBar() {
     const getProfilePic = () => {
         const token = localStorage.getItem('jwtToken')
         Axios.get("https://qimma-backend.onrender.com/profile/edit-user-info/getAvatar", { headers: { Authorization: `${token}` } }).then(response => {
-            setProfilePic(response.data.picture)
+            if (response.data.picture) {
+                setProfilePic(response.data.picture)
+            }else{
+                setProfilePic(DefaultAvatar)
+            }
         })
     }
     const getUserType = () => {
